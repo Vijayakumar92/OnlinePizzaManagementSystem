@@ -8,5 +8,5 @@ import com.onlinepizza.entity.PizzaType;
 @Repository
 public interface PizzaTypeRepository extends JpaRepository<PizzaType, Integer>{
 
-	PizzaType findByPizzaTypeId(int id); // check once
+//	PizzaType findByPizzaTypeId(int id); // check once
 }

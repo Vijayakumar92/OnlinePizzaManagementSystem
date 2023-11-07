@@ -2,6 +2,7 @@ package com.onlinepizza.serviceimp;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,72 +16,88 @@ import com.onlinepizza.service.IPizzaOrderService;
 public class IPizzaOrderServiceImp implements IPizzaOrderService{
 	
 	@Autowired
-	private PizzaOrderRepository PizzaOrderRepository;
+	PizzaOrderRepository pizzaOrderRepository;
+	
+	
 
 	@Override
 	public PizzaOrder bookPizzaOrder(PizzaOrder order) {
 		
 		
-		return PizzaOrderRepository.save(order);
+		return pizzaOrderRepository.save(order);
 	}
 
 	@Override
 	public PizzaOrder updatepizzaOrder(PizzaOrder pizzaOrder) {
+		PizzaOrder object=new PizzaOrder();
 		
-		return PizzaOrderRepository.save(pizzaOrder);
+		object.setBookingOrderId(pizzaOrder.getBookingOrderId());
+		object.setCustomer(pizzaOrder.getCustomer());
+		object.setDateTimeOfOrder(pizzaOrder.getDateTimeOfOrder());
+		object.setPizzaList(pizzaOrder.getPizzaList());
+		object.setQuantity(pizzaOrder.getQuantity());
+		object.setStatus(pizzaOrder.getStatus());
+		object.setTotalCost(pizzaOrder.getTotalCost());
+		
+		
+		return object;
 	}
 
 	@Override
-	public PizzaOrder cancelPizzaOrder(Integer pizzaId) {
+	public String cancelPizzaOrder(Integer pizzaId) {
 		
-		
-		return null;
+		pizzaOrderRepository.deleteById(pizzaId);
+		return "Order Cancelled";
 	}
 
 	@Override
 	public PizzaOrder viewPizzaOrderById(Integer pizzaOrderId) {
 		
 		
-		return PizzaOrderRepository.viewCustomerByPhone(pizzaOrderId);
+//		return PizzaOrderRepository.findBybookingOrderId(pizzaOrderId);
+		
+		return pizzaOrderRepository.findById(pizzaOrderId).get();
 	}
 
 	@Override
 	public List<PizzaOrder> viewAllPizzaOrders() {
 		
-		 List<PizzaOrder> pizzaOrderList = PizzaOrderRepository.findAll();
+		 List<PizzaOrder> pizzaOrderList = pizzaOrderRepository.findAll();
 			return pizzaOrderList;
 	}
 
 	@Override
 	public List<PizzaOrder> viewPizzaOrderByStartAndEndDate(LocalDate startDate, LocalDate endDate) {
 		
-		System.out.println(startDate);
-		System.out.println(endDate);
-		return null;
+//		System.out.println(startDate);
+//		System.out.println(endDate);
+		return pizzaOrderRepository.findAll().stream().filter(e->e.getDateTimeOfOrder().toLocalDate().isAfter(startDate) && e.getDateTimeOfOrder().toLocalDate().isBefore(endDate)).collect(Collectors.toList());
 	}
 
 	@Override
 	public List<PizzaOrder> viewPizzaOrderByDate(LocalDate date) {
-		
-		return null;
+		 
+		return pizzaOrderRepository.findAll().stream().filter(e->e.getDateTimeOfOrder().toLocalDate().isEqual(date)).collect(Collectors.toList());
 	}
 
 	@Override
 	public List<PizzaOrder> viewPizzaOrderByCustomerId(Integer customerId) {
 	
-		return null;
+		return pizzaOrderRepository.findAll().stream().filter(e->e.getCustomer().getCustomerId()== customerId).collect(Collectors.toList());
 	}
 
 	@Override
 	public List<PizzaOrder> viewPizzaOrderByStatus(String status) {
 		
-		return null;
+		return pizzaOrderRepository.findAll().stream()
+		.filter(e -> e.getStatus().equals(status))
+		.collect(Collectors.toList());
 	}
 
 	@Override
 	public List<PizzaOrder> viewPizzaOrderByCustomerIdAndStatus(Integer customerId, String status) {
 	
-		return null;
+		return pizzaOrderRepository.findAll().stream().filter(e->e.getCustomer().getCustomerId()==customerId && e.getStatus().equals(status)).collect(Collectors.toList()) ;
 	}
 
 	

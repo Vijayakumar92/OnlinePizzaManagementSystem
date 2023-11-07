@@ -11,9 +11,7 @@ import jakarta.persistence.Table;
 @Entity
 @Table
 public class User {
-	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Integer userId;
+	
 	private String userName;
 	private String password;
 	private Long contactNo;
@@ -26,26 +24,14 @@ public class User {
 public User() {}
 
 
-public User(Integer userId, String userName, String password, Long contactNo, String email, String city,
-		String userRole) {
+public User(String userName, String password, Long contactNo, String email, String city, String userRole) {
 	super();
-	this.userId = userId;
 	this.userName = userName;
 	this.password = password;
 	this.contactNo = contactNo;
 	this.email = email;
 	this.city = city;
 	this.userRole = userRole;
-}
-
-
-public Integer getUserId() {
-	return userId;
-}
-
-
-public void setUserId(Integer userId) {
-	this.userId = userId;
 }
 
 
@@ -111,31 +97,13 @@ public void setUserRole(String userRole) {
 
 @Override
 public String toString() {
-	return "User [userId=" + userId + ", userName=" + userName + ", password=" + password + ", contactNo=" + contactNo
-			+ ", email=" + email + ", city=" + city + ", userRole=" + userRole + "]";
+	return "User [userName=" + userName + ", password=" + password + ", contactNo=" + contactNo + ", email=" + email
+			+ ", city=" + city + ", userRole=" + userRole + "]";
 }
 
 
-@Override
-public int hashCode() {
-	return Objects.hash(city, contactNo, email, password, userId, userName, userRole);
-}
 
 
-@Override
-public boolean equals(Object obj) {
-	if (this == obj)
-		return true;
-	if (obj == null)
-		return false;
-	if (getClass() != obj.getClass())
-		return false;
-	User other = (User) obj;
-	return Objects.equals(city, other.city) && Objects.equals(contactNo, other.contactNo)
-			&& Objects.equals(email, other.email) && Objects.equals(password, other.password)
-			&& Objects.equals(userId, other.userId) && Objects.equals(userName, other.userName)
-			&& Objects.equals(userRole, other.userRole);
-}
 
 
 

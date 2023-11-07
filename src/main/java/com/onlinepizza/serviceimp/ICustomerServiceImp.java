@@ -12,65 +12,53 @@ import com.onlinepizza.service.ICustomerService;
 public class ICustomerServiceImp implements ICustomerService {
 
 	@Autowired
-	private CustomerRepository customerRepository;
+	 CustomerRepository customerRepository;
 
+	
 	@Override
 	public Customer registerCustomer(Customer customer) {
-
-		return customerRepository.save(customer);
+	return customerRepository.save(customer);
 	}
 
+	
 	@Override
 	public Customer updateCustomer(Customer customer) {
-
-//	Customer object=new Customer();
-//		
-//		object.setCustomerName(customer.getCustomerName());
-//		object.setCustomerMobile(customer.getCustomerMobile());
-//		object.setCustomerEmail(customer.getCustomerEmail());
-//		object.setCustomerAddress(customer.getCustomerAddress());
+	Customer object=new Customer();
+		
+		object.setCustomerName(customer.getCustomerName());
+		object.setCustomerMobile(customer.getCustomerMobile());
+		object.setCustomerEmail(customer.getCustomerEmail());
+		object.setCustomerAddress(customer.getCustomerAddress());
 
 		return customerRepository.save(customer);
 	}
 
+	
 	@Override
 	public Customer viewCustomerByPhone(Long phoneNo) {
-
 	        return customerRepository.findByCustomerMobile(phoneNo);
-	        
-	        
+	            
 	}
-	@Override
-	        
+	
+	
+	@Override     
 	public List<Customer> viewAllCustomer() {
 
-	        List<Customer> customersList = customerRepository.findAll();
-			return customersList;
+//	        List<Customer> customersList = customerRepository.findAll();
+//			return customersList;
+		return customerRepository.findAll();
 
 	      
-	} 
-	        
-//	@Override
-//	public Customer viewCustomerByPhone(Long phoneNo) {
-//
-//		if (!customerRepository.existsById(phoneNo)) {
-//			throw new CustomerNotFoutexception("Customer Does Not Found");
-//		}
-//		return customerRepository.findById(phoneNo).get();
-//	}
-//
-//	@Override
-//	public List<Customer> viewAllCustomer() {
-//
-//		return null;
-//	}
+	}
 
 	
 	@Override
 	public Customer viewCustomerById(Integer customerId) {
-
+		return customerRepository.findById(customerId).get();
 		
-		return customerRepository.findById(customerId);
-	}
+		
+	} 
+	        
+
 
 }

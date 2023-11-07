@@ -8,11 +8,12 @@ import com.onlinepizza.entity.PizzaOrder;
 
 public interface IPizzaOrderService {
 	
+	
 	PizzaOrder bookPizzaOrder(PizzaOrder order);
 
 	PizzaOrder updatepizzaOrder(PizzaOrder pizzaOrder);
 
-	PizzaOrder cancelPizzaOrder(Integer pizzaId);
+	String cancelPizzaOrder(Integer pizzaId);
 
 	PizzaOrder viewPizzaOrderById(Integer pizzaOrderId);
 	

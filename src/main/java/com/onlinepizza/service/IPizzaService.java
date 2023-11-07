@@ -9,24 +9,24 @@ import com.onlinepizza.entity.Pizza;
 import com.onlinepizza.entity.PizzaType;
 import com.onlinepizza.entity.Toppings;
 
-public interface IPizzaService {
-	Pizza addPizza(Pizza pizza);
+public interface IPizzaService { // all methods implemented
+	Pizza addPizza(Pizza pizza);  //done
 
 	Toppings addToppings(Toppings toppings);
 
 	PizzaType addPizzaType(PizzaType pizzaType);
 
-	Pizza updatePizza(Pizza pizza);
+	Pizza updatePizza(Pizza pizza); // done
 
-	Pizza viewPizzaById(Integer pizzaId);
+	Pizza viewPizzaById(Integer pizzaId); //done
 
-	List<Pizza> viewPizzaByPizzaType(String pizzaType);
+	List<Pizza> viewPizzaByPizzaType(String pizzaType); //
 
-	List<Pizza> viewPizzaByPizzaSize(String pizzaSize);
+	List<Pizza> viewPizzaByPizzaSize(String pizzaSize); //
 
-	List<Pizza> viewPizzaByPrice(Double minPrice, Double maxPrice);
+	List<Pizza> viewPizzaByPrice(Double minPrice, Double maxPrice); //
 
-	List<Pizza> viewAllPizza();
+	List<Pizza> viewAllPizza(); //done
 
 	List<Toppings> viewToppings();
 

@@ -8,5 +8,6 @@ public interface IUserService {
 	UserDTO signIn(String userName, String password);
 
 	// use session management accordingly
+	
 	public String signOut();
 }

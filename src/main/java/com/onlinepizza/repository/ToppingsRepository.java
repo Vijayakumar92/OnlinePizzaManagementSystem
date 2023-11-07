@@ -9,5 +9,6 @@ import com.onlinepizza.entity.Toppings;
 public interface ToppingsRepository extends JpaRepository<Toppings, Integer> {
 	
 //	Toppings findByToppingsId(int Id);  // check once
+	
 
 }

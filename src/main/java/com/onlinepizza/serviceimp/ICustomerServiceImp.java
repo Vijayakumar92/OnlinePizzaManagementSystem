@@ -1,0 +1,76 @@
+package com.onlinepizza.serviceimp;
+
+import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.onlinepizza.entity.Customer;
+import com.onlinepizza.repository.CustomerRepository;
+import com.onlinepizza.service.ICustomerService;
+
+@Service
+public class ICustomerServiceImp implements ICustomerService {
+
+	@Autowired
+	private CustomerRepository customerRepository;
+
+	@Override
+	public Customer registerCustomer(Customer customer) {
+
+		return customerRepository.save(customer);
+	}
+
+	@Override
+	public Customer updateCustomer(Customer customer) {
+
+//	Customer object=new Customer();
+//		
+//		object.setCustomerName(customer.getCustomerName());
+//		object.setCustomerMobile(customer.getCustomerMobile());
+//		object.setCustomerEmail(customer.getCustomerEmail());
+//		object.setCustomerAddress(customer.getCustomerAddress());
+
+		return customerRepository.save(customer);
+	}
+
+	@Override
+	public Customer viewCustomerByPhone(Long phoneNo) {
+
+	        return customerRepository.findByCustomerMobile(phoneNo);
+	        
+	        
+	}
+	@Override
+	        
+	public List<Customer> viewAllCustomer() {
+
+	        List<Customer> customersList = customerRepository.findAll();
+			return customersList;
+
+	      
+	} 
+	        
+//	@Override
+//	public Customer viewCustomerByPhone(Long phoneNo) {
+//
+//		if (!customerRepository.existsById(phoneNo)) {
+//			throw new CustomerNotFoutexception("Customer Does Not Found");
+//		}
+//		return customerRepository.findById(phoneNo).get();
+//	}
+//
+//	@Override
+//	public List<Customer> viewAllCustomer() {
+//
+//		return null;
+//	}
+
+	
+	@Override
+	public Customer viewCustomerById(Integer customerId) {
+
+		
+		return customerRepository.findById(customerId);
+	}
+
+}

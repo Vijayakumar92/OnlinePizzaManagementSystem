@@ -69,7 +69,7 @@ public class IPizzaServiceImp implements IPizzaService { // all methods implemen
 		updatePizza.setPizzaId(pizza.getPizzaId());
 		updatePizza.setPizzaSize(pizza.getPizzaSize());
 		updatePizza.setPizzaName(pizza.getPizzaName());
-		updatePizza.setPizzaType(pizza.getPizzaType());
+		//updatePizza.setPizzaType(pizza.getPizzaType());
 
 		return updatePizza;
 	}
@@ -81,8 +81,9 @@ public class IPizzaServiceImp implements IPizzaService { // all methods implemen
 
 	@Override
 	public List<Pizza> viewPizzaByPizzaType(String pizzaType) {
-		return pizzaRepository.findAll().stream().filter(e -> e.getPizzaType().getPizzaType().equals(pizzaType))
-				.collect(Collectors.toList());
+//		return pizzaRepository.findAll().stream().filter(e -> e.getPizzaType().getPizzaType().equals(pizzaType))
+//				.collect(Collectors.toList());
+			return null;
 	}
 
 	@Override

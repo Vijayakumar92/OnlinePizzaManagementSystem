@@ -5,10 +5,11 @@ import org.springframework.stereotype.Repository;
 
 import com.onlinepizza.entity.Toppings;
 
-@Repository
+//@Repository
 public interface ToppingsRepository extends JpaRepository<Toppings, Integer> {
 	
-//	Toppings findByToppingsId(int Id);  // check once
+
+	String deleteById(Toppings toppingsId);
 	
 
 }

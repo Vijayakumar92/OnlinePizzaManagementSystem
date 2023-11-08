@@ -10,6 +10,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 
@@ -22,11 +24,11 @@ public class PizzaOrder {
 	private LocalDateTime dateTimeOfOrder;
 	private Integer quantity;
 	private Double totalCost;
-	@Transient
+    @OneToMany
 	private List<Pizza> pizzaList;
-	@Transient
+	@ManyToOne
 	private Customer customer;
-	private PizzaStatus status;  //  private Status status changed to string
+	private PizzaStatus status;  //  
 	
 	public PizzaOrder() {}
 

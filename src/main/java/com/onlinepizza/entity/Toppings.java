@@ -13,6 +13,7 @@ public class Toppings {
 	private String toppingsName;
 	private Double price;
 	
+	
 	public Toppings() {}
 
 	public Toppings(Integer toppingsId, String toppingsName, Double price) {

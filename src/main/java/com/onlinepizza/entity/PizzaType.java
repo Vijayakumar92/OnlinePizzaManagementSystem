@@ -7,6 +7,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 public class PizzaType {
@@ -14,6 +15,7 @@ public class PizzaType {
 	private Integer pizzaTypeId;
 	// Veg or Non-Veg
 	private String pizzaType;
+	@OneToMany
 	private List<Toppings> toppings;
 	
 	public PizzaType() {}

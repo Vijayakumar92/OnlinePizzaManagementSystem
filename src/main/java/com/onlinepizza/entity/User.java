@@ -6,12 +6,18 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Inheritance;
+import jakarta.persistence.InheritanceType;
 import jakarta.persistence.Table;
 
 @Entity
-@Table
+@Table(name="User")
+@Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
 public class User {
 	
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private Integer userId;
 	private String userName;
 	private String password;
 	private Long contactNo;
@@ -24,14 +30,26 @@ public class User {
 public User() {}
 
 
-public User(String userName, String password, Long contactNo, String email, String city, String userRole) {
+public User(Integer userId, String userName, String password, Long contactNo, String email, String city,
+		String userRole) {
 	super();
+	this.userId = userId;
 	this.userName = userName;
 	this.password = password;
 	this.contactNo = contactNo;
 	this.email = email;
 	this.city = city;
 	this.userRole = userRole;
+}
+
+
+public Integer getUserId() {
+	return userId;
+}
+
+
+public void setUserId(Integer userId) {
+	this.userId = userId;
 }
 
 
@@ -97,13 +115,9 @@ public void setUserRole(String userRole) {
 
 @Override
 public String toString() {
-	return "User [userName=" + userName + ", password=" + password + ", contactNo=" + contactNo + ", email=" + email
-			+ ", city=" + city + ", userRole=" + userRole + "]";
+	return "User [userId=" + userId + ", userName=" + userName + ", password=" + password + ", contactNo=" + contactNo
+			+ ", email=" + email + ", city=" + city + ", userRole=" + userRole + "]";
 }
-
-
-
-
 
 
 

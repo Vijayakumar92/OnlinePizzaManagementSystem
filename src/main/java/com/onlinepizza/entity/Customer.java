@@ -10,33 +10,23 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table
-public class Customer extends User{
-	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Integer customerId;
+public class Customer extends User {
+
 	private Long customerMobile;
 	private String customerName;
 	private String customerEmail;
 	private String customerAddress;
-	
-	public Customer() {}
 
-	public Customer(Integer customerId, Long customerMobile, String customerName, String customerEmail,
-			String customerAddress) {
+	public Customer() {
+	}
+
+	public Customer(Long customerMobile, String customerName, String customerEmail, String customerAddress) {
 		super();
-		this.customerId = customerId;
+
 		this.customerMobile = customerMobile;
 		this.customerName = customerName;
 		this.customerEmail = customerEmail;
 		this.customerAddress = customerAddress;
-	}
-
-	public Integer getCustomerId() {
-		return customerId;
-	}
-
-	public void setCustomerId(Integer customerId) {
-		this.customerId = customerId;
 	}
 
 	public Long getCustomerMobile() {
@@ -73,16 +63,8 @@ public class Customer extends User{
 
 	@Override
 	public String toString() {
-		return "Customer [customerId=" + customerId + ", customerMobile=" + customerMobile + ", customerName="
-				+ customerName + ", customerEmail=" + customerEmail + ", customerAddress=" + customerAddress + "]";
+		return "Customer [customerMobile=" + customerMobile + ", customerName=" + customerName + ", customerEmail="
+				+ customerEmail + ", customerAddress=" + customerAddress + "]";
 	}
 
-	
-
-	
-	
-	
-	
-
-	
 }

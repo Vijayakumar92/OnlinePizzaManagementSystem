@@ -52,6 +52,14 @@ public class Toppings {
 	public void setPrice(Double price) {
 		this.price = price;
 	}
+
+	@Override
+	public String toString() {
+		return "Toppings [toppingsId=" + toppingsId + ", toppingsName=" + toppingsName + ", price=" + price + ", pizza="
+				+ pizza + "]";
+	}
+	
+	
 	
 	
 }

@@ -47,22 +47,6 @@ public class PizzaTypeDTO {
 		return "PizzaTypeDTO [pizzaTypeId=" + pizzaTypeId + ", pizzaType=" + pizzaType + ", toppings=" + toppings + "]";
 	}
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(pizzaType, pizzaTypeId, toppings);
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		PizzaTypeDTO other = (PizzaTypeDTO) obj;
-		return Objects.equals(pizzaType, other.pizzaType) && Objects.equals(pizzaTypeId, other.pizzaTypeId)
-				&& Objects.equals(toppings, other.toppings);
-	}
+	
 	
 }

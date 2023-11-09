@@ -45,22 +45,6 @@ public class ToppingsDTO {
 		return "ToppingsDTO [toppingsId=" + toppingsId + ", toppingsName=" + toppingsName + ", price=" + price + "]";
 	}
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(price, toppingsId, toppingsName);
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		ToppingsDTO other = (ToppingsDTO) obj;
-		return Objects.equals(price, other.price) && Objects.equals(toppingsId, other.toppingsId)
-				&& Objects.equals(toppingsName, other.toppingsName);
-	}
+	
 	
 }

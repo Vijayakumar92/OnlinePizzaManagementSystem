@@ -60,22 +60,5 @@ public class PizzaType {
 		return "PizzaType [pizzaTypeId=" + pizzaTypeId + ", pizzaType=" + pizzaType + ", toppings=" + toppings + "]";
 	}
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(pizzaType, pizzaTypeId, toppings);
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		PizzaType other = (PizzaType) obj;
-		return Objects.equals(pizzaType, other.pizzaType) && Objects.equals(pizzaTypeId, other.pizzaTypeId)
-				&& Objects.equals(toppings, other.toppings);
-	}
 	
 }

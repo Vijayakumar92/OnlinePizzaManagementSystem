@@ -56,24 +56,6 @@ public class CustomerDTO extends UserDTO{
 				+ customerEmail + ", customerAddress=" + customerAddress + "]";
 	}
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(customerAddress, customerEmail, customerMobile, customerName);
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		CustomerDTO other = (CustomerDTO) obj;
-		return Objects.equals(customerAddress, other.customerAddress)
-				&& Objects.equals(customerEmail, other.customerEmail)
-				&& Objects.equals(customerMobile, other.customerMobile)
-				&& Objects.equals(customerName, other.customerName);
-	}
+	
 	
 }

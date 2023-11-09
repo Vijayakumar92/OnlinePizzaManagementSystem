@@ -112,25 +112,6 @@ public class PizzaOrder {
 				+ ", status=" + status + "]";
 	}
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(bookingOrderId, customer, dateTimeOfOrder, pizzaList, quantity, status, totalCost);
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		PizzaOrder other = (PizzaOrder) obj;
-		return Objects.equals(bookingOrderId, other.bookingOrderId) && Objects.equals(customer, other.customer)
-				&& Objects.equals(dateTimeOfOrder, other.dateTimeOfOrder) && Objects.equals(pizzaList, other.pizzaList)
-				&& Objects.equals(quantity, other.quantity) && status == other.status
-				&& Objects.equals(totalCost, other.totalCost);
-	}
 	
 
 	

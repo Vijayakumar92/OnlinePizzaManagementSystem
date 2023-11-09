@@ -80,24 +80,7 @@ public class PizzaDTO {
 				+ "]";
 	}
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(pizzaCost, pizzaDescription, pizzaId, pizzaName, pizzaSize, pizzaType);
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		PizzaDTO other = (PizzaDTO) obj;
-		return Objects.equals(pizzaCost, other.pizzaCost) && Objects.equals(pizzaDescription, other.pizzaDescription)
-				&& Objects.equals(pizzaId, other.pizzaId) && Objects.equals(pizzaName, other.pizzaName)
-				&& pizzaSize == other.pizzaSize && Objects.equals(pizzaType, other.pizzaType);
-	}
+	
 	
 
 }

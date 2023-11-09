@@ -26,7 +26,7 @@ public class IPizzaTypeController {
 	}
 	
 	@DeleteMapping("/ptypedelete")
-	public String deleteById(PizzaType pizzaTypeId) {
+	public String deleteById(Integer pizzaTypeId) {
 		return iPizzaTypeServiceImp.deleteById(pizzaTypeId);
 		
 	}

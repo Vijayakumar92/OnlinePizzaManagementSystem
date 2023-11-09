@@ -1,7 +1,5 @@
 package com.onlinepizza.entity;
 
-import java.util.Objects;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,7 +11,7 @@ import javax.persistence.Table;
 
 
 @Entity
-@Table(name="User")
+@Table(name="User_table")
 @Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
 public class User {
 	

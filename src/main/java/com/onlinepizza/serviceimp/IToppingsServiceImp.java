@@ -1,11 +1,13 @@
 package com.onlinepizza.serviceimp;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.onlinepizza.entity.Toppings;
 import com.onlinepizza.repository.ToppingsRepository;
 import com.onlinepizza.service.IToppingsService;
 
+@Service
 public class IToppingsServiceImp implements IToppingsService{
 
 	@Autowired
@@ -17,7 +19,7 @@ public class IToppingsServiceImp implements IToppingsService{
 		return "Toppings added";
 	}
 	@Override
-	public String deleteToppingsById(Toppings toppingsId) {
+	public String deleteToppingsById(Integer toppingsId) {
 		toppingsRepository.deleteById(toppingsId);
 		return "Toppings Removed Successfully";
 	}

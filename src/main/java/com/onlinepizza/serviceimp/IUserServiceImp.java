@@ -29,7 +29,7 @@ public class IUserServiceImp implements IUserService {
 
 	@Override
 	public UserDTO signIn(String userName, String password) {
-		User user=userRepository.findByName(userName);
+		User user=userRepository.findByUserName(userName);
 		UserDTO userDto= new UserDTO();
 		if((user.getPassword().equals(password))) {
 			userDto.setUserId(user.getUserId());

@@ -23,7 +23,7 @@ public class IPizzaTypeServiceImp implements IPizzaTypeService {
 	}
 
 	@Override
-	public String deleteById(PizzaType pizzaTypeId) {
+	public String deleteById(Integer pizzaTypeId) {
 		pizzaTypeRepository.deleteById(pizzaTypeId);
 		return "PizzaType Removed";
 	}

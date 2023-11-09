@@ -8,9 +8,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import com.onlinepizza.util.PizzaStatus;
 
@@ -22,12 +24,14 @@ public class PizzaOrder {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer bookingOrderId;
+	
+//	@Temporal(TemporalType.DATE)
 	private LocalDateTime dateTimeOfOrder;
 	private Integer quantity;
 	private Double totalCost;
     @OneToMany
 	private List<Pizza> pizzaList;
-	@ManyToOne
+	@OneToOne
 	private Customer customer;
 	private PizzaStatus status;  //  
 	

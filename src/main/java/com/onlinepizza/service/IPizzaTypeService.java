@@ -7,7 +7,7 @@ import com.onlinepizza.entity.PizzaType;
 public interface IPizzaTypeService {
 	
 	String addPizzaType(PizzaType pizzaType);
-	String deleteById(PizzaType pizzaTypeId);
+	String deleteById(Integer pizzaTypeId);
 	List<PizzaType> viewPizzaType();
 
 }

@@ -36,7 +36,7 @@ public class IPizzaServiceImp implements IPizzaService { // all methods implemen
 
 	}
 
-	@Override
+
 	public Toppings addToppings(Toppings toppings) {
 		Toppings newToppings = new Toppings();
 		newToppings.setToppingsName(toppings.getToppingsName());
@@ -46,7 +46,6 @@ public class IPizzaServiceImp implements IPizzaService { // all methods implemen
 
 	}
 
-	@Override
 	public PizzaType addPizzaType(PizzaType pizzaType) {
 
 		PizzaType newPizzaType = new PizzaType();
@@ -60,7 +59,7 @@ public class IPizzaServiceImp implements IPizzaService { // all methods implemen
 
 	}
 
-	@Override
+	
 	public Pizza updatePizza(Pizza pizza) {
 
 		Pizza updatePizza = new Pizza();
@@ -74,54 +73,54 @@ public class IPizzaServiceImp implements IPizzaService { // all methods implemen
 		return updatePizza;
 	}
 
-	@Override
+	
 	public Pizza viewPizzaById(Integer pizzaId) {
 		return pizzaRepository.findById(pizzaId).get();
 	}
 
-	@Override
+	
 	public List<Pizza> viewPizzaByPizzaType(String pizzaType) {
-//		return pizzaRepository.findAll().stream().filter(e -> e.getPizzaType().getPizzaType().equals(pizzaType))
-//				.collect(Collectors.toList());
-			return null;
+		return pizzaRepository.findAll().stream().filter(e -> e.getPizzaType().getPizzaType().equals(pizzaType))
+				.collect(Collectors.toList());
+//			return null;
 	}
 
-	@Override
+	
 	public List<Pizza> viewPizzaByPizzaSize(String pizzaSize) {
 		return pizzaRepository.findAll().stream().filter(e -> e.getPizzaSize().toString().equals(pizzaSize))
 				.collect(Collectors.toList());
 	}
 
-	@Override
+	
 	public List<Pizza> viewPizzaByPrice(Double minPrice, Double maxPrice) {
 		return pizzaRepository.findAll().stream()
 				.filter(e -> e.getPizzaCost() >= minPrice || e.getPizzaCost() <= maxPrice).collect(Collectors.toList());
 	}
 
-	@Override
+	
 	public List<Pizza> viewAllPizza() {
 		return pizzaRepository.findAll();
 	}
 
-	@Override
+	
 	public List<Toppings> viewToppings() {
 
 		return toppingsRepository.findAll();
 	}
 
-	@Override
+	
 	public Toppings viewToppingByID(Integer toppingsID) {
 
 		return toppingsRepository.findById(toppingsID).get();
 	}
 
-	@Override
+	
 	public PizzaType viewPizzaTypeById(Integer pizzaTypeId) {
 
 		return pizzaTypeRepository.findById(pizzaTypeId).get();
 	}
 
-	@Override
+	
 	public List<PizzaType> viewAllPizzaTypes() {
 
 		return pizzaTypeRepository.findAll();

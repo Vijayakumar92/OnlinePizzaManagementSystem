@@ -27,13 +27,13 @@ public class ICustomerServiceController {
 		
 	}
 	
-	@PostMapping("/updatecustomer")
+	@PutMapping("/updatecustomer")
 	public Customer updateCustomer(@RequestBody Customer customer) {
 		return icustomerserviceimp.updateCustomer(customer);
 		
 	}
 	
-	@PutMapping ("/viewcbyphone/{phoneNo}")
+	@GetMapping ("/viewcbyphone/{phoneNo}")
 	public Customer viewCustomerByPhone(@PathVariable ("phoneNo") Long phoneNo) {
 		return icustomerserviceimp.viewCustomerByPhone(phoneNo);
 		
@@ -46,7 +46,7 @@ public class ICustomerServiceController {
 	}
 	
 	@GetMapping("/viewcbyid/{customerId}")
-	public Customer viewCustomerById(@PathVariable (" customerId") Integer customerId) {
+	public Customer viewCustomerById(@PathVariable ("customerId") Integer customerId) {
 		return icustomerserviceimp.viewCustomerById(customerId);
 		
 	}

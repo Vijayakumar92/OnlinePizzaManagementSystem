@@ -62,15 +62,15 @@ public class IPizzaOrderController {
 	}
 
 	
-	@GetMapping("/viewpbyldate")
+	@GetMapping("/viewpbyldate/{date}")
 	public 	List<PizzaOrder> viewPizzaOrderByDate(@PathVariable LocalDate date){
 		return ipizzaorderservice.viewPizzaOrderByDate(date);
 		
 	}
 	
-	
-	public 	List<PizzaOrder> viewPizzaOrderByCustomerId(Integer customerId){
-		return null;
+	@GetMapping("/viewporderbycid/{cid}")
+	public 	List<PizzaOrder> viewPizzaOrderByCustomerId(@PathVariable ("cid") Integer customerId){
+		return ipizzaorderservice.viewPizzaOrderByCustomerId(customerId);
 		
 	}
 

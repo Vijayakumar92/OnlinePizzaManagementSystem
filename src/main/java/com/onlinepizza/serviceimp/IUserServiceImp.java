@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import com.onlinepizza.dto.UserDTO;
 import com.onlinepizza.entity.User;
+import com.onlinepizza.exception.UserManagementException;
 import com.onlinepizza.repository.UserRepository;
 import com.onlinepizza.service.IUserService;
 
@@ -15,7 +16,12 @@ public class IUserServiceImp implements IUserService {
 	UserRepository userRepository;
 
 	@Override
-	public UserDTO registerUser(User user) {
+	public UserDTO registerUser(User user) throws UserManagementException {
+	
+			if(userRepository.save(user)==null) {
+				throw new UserManagementException("Invalid User");
+			}else {
+		
 		UserDTO object= new UserDTO();
 		object.setUserId(user.getUserId());
 		object.setUserName(user.getUserName());
@@ -24,12 +30,21 @@ public class IUserServiceImp implements IUserService {
 		
 		return object;
 	}
-	
+	}
 	
 
 	@Override
-	public UserDTO signIn(String userName, String password) {
+	public UserDTO signIn(String userName, String password) throws UserManagementException {
+		
+		if(userRepository.findByUserName(userName)==null) {
+			throw new UserManagementException("Invalid User"); 	
+		}
 		User user=userRepository.findByUserName(userName);
+		if(!user.getPassword().equals(password)) {
+			throw new UserManagementException("Invalid Password");
+		}
+		else {
+		
 		UserDTO userDto= new UserDTO();
 		if((user.getPassword().equals(password))) {
 			userDto.setUserId(user.getUserId());
@@ -40,7 +55,7 @@ public class IUserServiceImp implements IUserService {
 		}
 		return null;
 	}
-	
+	}
 	
 
 	@Override

@@ -12,10 +12,12 @@ import com.onlinepizza.dto.ToppingsDTO;
 import com.onlinepizza.entity.Pizza;
 import com.onlinepizza.entity.PizzaType;
 import com.onlinepizza.entity.Toppings;
+import com.onlinepizza.exception.PizzaServiceManagementException;
 import com.onlinepizza.repository.PizzaRepository;
 import com.onlinepizza.repository.PizzaTypeRepository;
 import com.onlinepizza.repository.ToppingsRepository;
 import com.onlinepizza.service.IPizzaService;
+
 
 @Service
 public class IPizzaServiceImp implements IPizzaService { // all methods implemented
@@ -74,17 +76,25 @@ public class IPizzaServiceImp implements IPizzaService { // all methods implemen
 	}
 
 	
-	public Pizza viewPizzaById(Integer pizzaId) {
+	public Pizza viewPizzaById(Integer pizzaId) throws PizzaServiceManagementException{
+		if(pizzaRepository.existsById(pizzaId)==false) {
+			throw new PizzaServiceManagementException("Pizza not exist");
+		}else
 		return pizzaRepository.findById(pizzaId).get();
 	}
 
 	
-	public List<Pizza> viewPizzaByPizzaType(String pizzaType) {
-		return pizzaRepository.findAll().stream().filter(e -> e.getPizzaType().getPizzaType().equals(pizzaType))
+	public List<Pizza> viewPizzaByPizzaType(String pizzaType) throws PizzaServiceManagementException{
+		List<Pizza> pizzaByType =pizzaRepository.findAll().stream().filter(e -> e.getPizzaType().getPizzaType().equals(pizzaType))
 				.collect(Collectors.toList());
+		if(!pizzaByType.isEmpty()) {
+			return pizzaByType;
+		}
+		else {
+			throw new PizzaServiceManagementException("Pizza type doesnot exist");
+		}
 //			return null;
 	}
-
 	
 	public List<Pizza> viewPizzaByPizzaSize(String pizzaSize) {
 		return pizzaRepository.findAll().stream().filter(e -> e.getPizzaSize().toString().equals(pizzaSize))
@@ -109,11 +119,19 @@ public class IPizzaServiceImp implements IPizzaService { // all methods implemen
 	}
 
 	
-	public Toppings viewToppingByID(Integer toppingsID) {
+	public Toppings viewToppingByID(Integer toppingsID) throws PizzaServiceManagementException{
+		
 
+		  if(toppingsRepository.existsById(toppingsID)==false) {
+			throw new PizzaServiceManagementException("Invalid id");
+		}
+		else {
+ 
 		return toppingsRepository.findById(toppingsID).get();
+		}
 	}
-
+	
+	
 	
 	public PizzaType viewPizzaTypeById(Integer pizzaTypeId) {
 

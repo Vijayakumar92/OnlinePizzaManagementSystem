@@ -3,7 +3,6 @@ package com.onlinepizza.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -11,12 +10,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.onlinepizza.dto.PizzaDTO;
 import com.onlinepizza.entity.Pizza;
 import com.onlinepizza.entity.PizzaType;
 import com.onlinepizza.entity.Toppings;
-import com.onlinepizza.service.IPizzaService;
+import com.onlinepizza.exception.PizzaServiceManagementException;
 import com.onlinepizza.serviceimp.IPizzaServiceImp;
+
 
 @RestController
 @RequestMapping("/pizzaservice")
@@ -34,7 +33,7 @@ public class IPizzaServiceController {
 	
 	
 	@PostMapping("/addtoppings")
-	public Toppings addToppings( @RequestBody  Toppings toppings) {
+	public Toppings addToppings(@RequestBody Toppings toppings) {
 		return iPizzaServiceImp.addToppings(toppings);  
 	}
 	
@@ -50,13 +49,13 @@ public class IPizzaServiceController {
 	}
 	
 	@GetMapping("/viewpizzabyid/{pizzaid}")
-	public Pizza viewPizzaById(@PathVariable("pizzaid") Integer pizzaId) {
+	public Pizza viewPizzaById(@PathVariable("pizzaid") Integer pizzaId) throws PizzaServiceManagementException{
 		return iPizzaServiceImp.viewPizzaById(pizzaId);
 		
 	}
 	
 	@GetMapping("/viewbyptype/{pizzatype}")
-	public List<Pizza> viewPizzaByPizzaType(@PathVariable("pizzatype") String pizzaType){
+	public List<Pizza> viewPizzaByPizzaType(@PathVariable("pizzatype") String pizzaType)throws PizzaServiceManagementException{
 		return iPizzaServiceImp.viewPizzaByPizzaType(pizzaType);
 		
 	}
@@ -87,14 +86,14 @@ public class IPizzaServiceController {
 	}
 	
 	
-	@GetMapping("/viewtbyid")
-	public Toppings viewToppingByID(Integer toppingsID) {
+	@GetMapping("/viewtbyid/{tid}")
+	public Toppings viewToppingByID(@PathVariable ("tid") Integer toppingsID) throws PizzaServiceManagementException {
 		return iPizzaServiceImp.viewToppingByID(toppingsID);
 		
 	}
 	
-	@GetMapping("/viewpbyid")
-	public PizzaType viewPizzaTypeById(Integer pizzaTypeId) {
+	@GetMapping("/viewpbyid/{ptypeid}")
+	public PizzaType viewPizzaTypeById(@PathVariable ("ptypeid") Integer pizzaTypeId) {
 		return iPizzaServiceImp.viewPizzaTypeById(pizzaTypeId);
 		
 	}

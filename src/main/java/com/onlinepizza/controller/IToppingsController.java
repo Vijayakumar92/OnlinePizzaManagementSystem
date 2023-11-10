@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -18,13 +19,13 @@ public class IToppingsController {
 	IToppingsServiceImp iToppingsServiceImp;
 	
 	@PostMapping("/add")
-	public String addToppings(Toppings topping) {
+	public String addToppings(@RequestBody Toppings topping) {
 		return iToppingsServiceImp.addToppings(topping);
 		
 	}
 	
 	@DeleteMapping("/delete/{id}")
-	public String deleteToppingsById(@PathVariable Integer toppingsId) {
+	public String deleteToppingsById(@PathVariable("id") Integer toppingsId) {
 		return iToppingsServiceImp.deleteToppingsById(toppingsId);
  
 	}

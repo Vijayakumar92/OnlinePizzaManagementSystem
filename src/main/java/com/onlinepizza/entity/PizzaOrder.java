@@ -14,6 +14,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.springframework.data.annotation.CreatedDate;
+
 import com.onlinepizza.util.PizzaStatus;
 
 
@@ -26,6 +28,8 @@ public class PizzaOrder {
 	private Integer bookingOrderId;
 	
 //	@Temporal(TemporalType.DATE)
+	
+	@CreatedDate
 	private LocalDateTime dateTimeOfOrder;
 	private Integer quantity;
 	private Double totalCost;
